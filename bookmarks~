@@ -2,11 +2,35 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/Sync/todo.org")
- (front-context-string . "** TODO [#A] RSN")
- (rear-context-string . "2023-01-13 Fri>\n")
- (position . 1962))
+(("elispintobookmark"
+ (front-context-string . "in a buffer is n")
+ (rear-context-string . "first character ")
+ (position . 150474)
+ (filename . "/Applications/Emacs.app/Contents/Resources/info/eintr")
+ (info-node . "Point and mark")
+ (handler . Info-bookmark-jump))
+("ElispIntro"
+ (front-context-string . "An Introduction ")
+ (rear-context-string . "ce,  Up: (dir)\n\n")
+ (position . 1554)
+ (filename . "/Applications/Emacs.app/Contents/Resources/info/eintr")
+ (info-node . "Top")
+ (handler . Info-bookmark-jump))
+("toread"
+ (filename . "~/Sync/toread.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+("pediatrics"
+ (filename . "~/Sync/Notebook/radiology/pediatrics.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+("org-capture-last-stored"
+ (filename . "~/Sync/Notebook/radiology/notes.org")
+ (front-context-string . "**** Incarcerate")
+ (rear-context-string . "23-01-13 Friday\n")
+ (position . 4327))
 ("abdominal"
  (filename . "~/Sync/Notebook/radiology/abdominal.org")
  (front-context-string)
@@ -18,7 +42,7 @@
  (rear-context-string . " Ohliger 1/12/23")
  (position . 30))
 ("init"
- (filename . "~/.basemacs/init.el")
+ (filename . "~/.emacs.d/")
  (front-context-string . "(custom-set-vari")
  (rear-context-string)
  (position . 1))

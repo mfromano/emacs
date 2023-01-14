@@ -27,7 +27,7 @@ Entered on %U
 	    Entered on %U")))
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(evil ess python-mode pylint poly-markdown js2-mode gh anki-vocabulary anki-editor org-bullets anki-connect anki-mode ac-helm jupyter ein conda tramp tramp-term helm-tramp which-key helm-lsp helm-fuzzy helm-org use-package-chords markdown-mode pdf-tools solarized-theme smartparens python eglot)))
+   '(cyberpunk-theme evil ess python-mode pylint poly-markdown js2-mode gh anki-vocabulary anki-editor org-bullets anki-connect anki-mode ac-helm jupyter ein conda tramp tramp-term helm-tramp which-key helm-lsp helm-fuzzy helm-org use-package-chords markdown-mode pdf-tools solarized-theme smartparens python eglot)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -56,6 +56,7 @@ Entered on %U
 (require 'tramp-term)
 (require 'ein)
 (require 'conda)
+(require 'evil)
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
@@ -65,7 +66,8 @@ Entered on %U
 (setq initial-scratch-message "")
 
 ;; APPEARANCE
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'cyberpunk t)
 (set-face-attribute 'default (selected-frame) :height 150)
 
 ;; modes 
@@ -81,7 +83,8 @@ Entered on %U
 (add-to-list 'auto-mode-alist '("\\.ipynb\\'" . ein:ipynb-mode))
 (add-to-list 'auto-mode-alist '("\\.r\\'" . ess-r-mode))
 
-(auto-complete-mode 1)
+(global-auto-complete-mode t)
+(evil-mode 1)
 
 ;; custom functions for SSH
 
@@ -117,6 +120,11 @@ Entered on %U
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+
+;;Exit insert mode by pressing j and then j quickly
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-mode 1)
 
 
 ;; ORG MODE PREFERENCES
