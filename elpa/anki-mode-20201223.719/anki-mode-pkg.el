@@ -1,2 +1,0 @@
-;;; Generated package description from anki-mode.el  -*- no-byte-compile: t -*-
-(define-package "anki-mode" "20201223.719" "A major mode for creating anki cards" '((emacs "24.4") (dash "2.12.0") (markdown-mode "2.2") (s "1.11.0") (request "0.3.0")) :commit "7cde5a68c9d0ef3811b0bd480274ea79909d2ddc" :authors '(("David Shepherd" . "davidshepherd7@gmail.com")) :maintainer '("David Shepherd" . "davidshepherd7@gmail.com") :keywords '("tools") :url "https://github.com/davidshepherd7/anki-mode")

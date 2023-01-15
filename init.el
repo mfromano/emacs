@@ -27,7 +27,7 @@ Entered on %U
 	    Entered on %U")))
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(cyberpunk-theme evil ess python-mode pylint poly-markdown js2-mode gh anki-vocabulary anki-editor org-bullets anki-connect anki-mode ac-helm jupyter ein conda tramp tramp-term helm-tramp which-key helm-lsp helm-fuzzy helm-org use-package-chords markdown-mode pdf-tools solarized-theme smartparens python eglot)))
+   '(## cyberpunk-theme evil ess poly-markdown js2-mode anki-editor org-bullets anki-connect ac-helm tramp tramp-term which-key use-package-chords pdf-tools python)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,17 +46,8 @@ Entered on %U
 ;; Don't delete this line.
 (package-initialize)
 
-(require 'org)
-(require 'helm-org)
 (require 'helm)
-(require 'python)
-(require 'smartparens)
 (require 'use-package)
-(require 'tramp)
-(require 'tramp-term)
-(require 'ein)
-(require 'conda)
-(require 'evil)
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
@@ -66,7 +57,6 @@ Entered on %U
 (setq initial-scratch-message "")
 
 ;; APPEARANCE
-;; (load-theme 'solarized-dark t)
 (load-theme 'cyberpunk t)
 (set-face-attribute 'default (selected-frame) :height 150)
 
@@ -74,15 +64,14 @@ Entered on %U
 (setq-default word-wrap t)
 (global-visual-line-mode t)
 (which-key-mode t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . jekyll-markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . jekyll-html-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'auto-mode-alist '("\\.ipynb\\'" . ein:ipynb-mode))
 (add-to-list 'auto-mode-alist '("\\.r\\'" . ess-r-mode))
-
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (global-auto-complete-mode t)
 (evil-mode 1)
 
@@ -120,6 +109,8 @@ Entered on %U
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c s") 'tramp-term)
+(global-set-key (kbd "C-c t") 'shell)
 
 ;;Exit insert mode by pressing j and then j quickly
 (setq key-chord-two-keys-delay 0.5)
