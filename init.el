@@ -27,7 +27,8 @@ Entered on %U
 	    Entered on %U")))
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(## cyberpunk-theme evil ess poly-markdown js2-mode anki-editor org-bullets anki-connect ac-helm tramp tramp-term which-key use-package-chords pdf-tools python)))
+   '(ein jekyll-modes yaml-mode yaml ## cyberpunk-theme evil ess poly-markdown js2-mode anki-editor org-bullets anki-connect ac-helm tramp tramp-term which-key use-package-chords pdf-tools python))
+ '(pdf-view-continuous t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,13 +65,14 @@ Entered on %U
 (setq-default word-wrap t)
 (global-visual-line-mode t)
 (which-key-mode t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . jekyll-markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . jekyll-html-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.r\\'" . ess-r-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (global-auto-complete-mode t)
 (evil-mode 1)

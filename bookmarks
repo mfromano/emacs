@@ -2,7 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("elispintobookmark"
+(("homepage"
+ (filename . "~/utils/homepage/")
+ (front-context-string . ".gitignore\n  drw")
+ (rear-context-string . "56 Jan  9 17:27 ")
+ (position . 241))
+("~/utils/homepage/"
+ (filename . "/Users/mromano/utils/homepage/")
+ (presel . "/Users/mromano/utils/homepage/.")
+ (handler . helm-ff-bookmark-jump))
+("elispintobookmark"
  (front-context-string . "in a buffer is n")
  (rear-context-string . "first character ")
  (position . 150474)
