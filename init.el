@@ -5,6 +5,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" default))
+ '(org-agenda-files
+   '("/Users/mromano/Sync/todo.org" "/Users/mromano/Sync/Notebook/research/journal.org" "/Users/mromano/Sync/Notebook/radiology/notes.org" "/Users/mromano/Sync/Notebook/habits.org" "/Users/mromano/Sync/Notebook/calendar.org"))
+ '(org-agenda-loop-over-headlines-in-active-region nil)
+ '(org-agenda-window-setup 'current-window)
  '(org-capture-templates
    '(("t" "todo" entry
       (file+headline "/Users/mromano/Sync/todo.org" "Tasks")
@@ -22,13 +26,30 @@ Entered on %U
   %i
   %a")
      ("b" "Journal" entry
-      (file "/Users/mromano/Sync/Notebook/blog.org")
+      (file "/Users/mromano/Sync/Notebook/diary.org")
       "* %?
-	    Entered on %U")))
+	    Entered on %U")
+     ("h" "Habit" entry
+      (file "/Users/mromano/Sync/Notebook/habits.org")
+      "* TODO %?
+SCHEDULED: <%<%Y-%m-%d %A> .+%^{Frequency?|1}d>
+:PROPERTIES:
+:STYLE: habit
+:END:
+Started on %U")
+     ("c" "Calendar" entry
+      (file "~/Sync/notebook/calendar.org")
+      "* TODO %?")))
  '(org-export-backends '(ascii html icalendar latex md odt))
+ '(org-modules
+   '(ol-bbdb ol-bibtex ol-docview ol-doi ol-eww ol-gnus org-habit ol-info ol-irc ol-mhe ol-rmail ol-w3m))
+ '(org-priority-default 65)
+ '(org-todo-keywords
+   '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
  '(package-selected-packages
-   '(ein jekyll-modes yaml-mode yaml ## cyberpunk-theme evil ess poly-markdown js2-mode anki-editor org-bullets anki-connect ac-helm tramp tramp-term which-key use-package-chords pdf-tools python))
- '(pdf-view-continuous t))
+   '(tree-sitter jupyter ein jekyll-modes yaml-mode yaml ## cyberpunk-theme evil ess poly-markdown js2-mode anki-editor org-bullets anki-connect ac-helm tramp tramp-term which-key use-package-chords pdf-tools python))
+ '(pdf-view-continuous t)
+ '(warning-suppress-types '((ein))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,6 +70,7 @@ Entered on %U
 
 (require 'helm)
 (require 'use-package)
+(require 'org-habit)
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
@@ -120,13 +142,21 @@ Entered on %U
 (key-chord-mode 1)
 
 
+;; set jupyter settings
+
+(setq ein:jupyter-default-server-command "/Users/mromano/opt/anaconda3/bin/jupyter")
+
 ;; ORG MODE PREFERENCES
 (setq org-agenda-files
   (quote ("/Users/mromano/Sync/todo.org"
-   "/Users/mromano/Sync/Notebook/research"
-   "/Users/mromano/Sync/Notebook/radiology"
-   "/Users/mromano/Sync/Notebook/blog.org"
+   "/Users/mromano/Sync/Notebook/research/journal.org"
+   "/Users/mromano/Sync/Notebook/radiology/notes.org"
+   "/Users/mromano/Sync/Notebook/diary.org"
+   "/Users/mromano/Sync/Notebook/habits.org"
+   "/Users/mromano/Sync/Notebook/calendar.org"
 )))
+
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 (setq org-highest-priority ?A)
 (setq org-lowest-priority ?C)
 (setq org-default-priority ?A)
@@ -162,3 +192,6 @@ Entered on %U
   ("C-M-y" . org-download-screenshot)
   :config
   (require 'org-download))
+
+(add-hook 'after-init-hook (lambda () (execute-kbd-macro (kbd "C-c a n"))))
+(setenv "TZ" "America/Los_Angeles")
